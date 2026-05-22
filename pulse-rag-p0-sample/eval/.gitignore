@@ -1,0 +1,6 @@
+# Local-only artifacts produced by the eval scripts.
+.env
+.venv/
+agent/.eval-agent.json
+__pycache__/
+*.pyc
