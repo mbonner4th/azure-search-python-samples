@@ -370,7 +370,7 @@ resource webApp 'Microsoft.App/containerApps@2024-03-01' = {
             { name: 'SearchServiceEndpoint', value: 'https://${search.name}.search.windows.net' }
             { name: 'SearchIndexName', value: 'pulse-device-chunks' }
             { name: 'RETRIEVAL_TOP_K', value: '5' }
-            { name: 'AGENT_NAME', value: '' }
+            { name: 'AGENT_NAME', value: 'pulse-device-agent' }
             { name: 'AZURE_CLIENT_ID', value: uami.properties.clientId }
             { name: 'COSMOS_ENDPOINT', value: cosmos.properties.documentEndpoint }
             { name: 'COSMOS_DATABASE_NAME', value: 'pulse-rag' }
