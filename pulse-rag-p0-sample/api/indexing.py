@@ -137,6 +137,8 @@ def _split_text(text: str) -> list[str]:
 
 
 def _version_token(version_value: str) -> str:
+    # P0-2: deterministic hash of the device version. Same version in -> same
+    # token out, which is what makes the composed chunk ID idempotent.
     return hashlib.sha256(version_value.encode("utf-8")).hexdigest()[:16]
 
 
@@ -145,6 +147,9 @@ def _chunk_content_hash(chunk_text: str) -> str:
 
 
 def build_chunk_id(source_id: str, version_value: str, chunk_index: int) -> str:
+    # P0-2: idempotent chunk key. Format {sourceId}_{versionToken}_{chunkIndex}
+    # guarantees that retrying the same (source, version) writes to the exact
+    # same document IDs, so retries overwrite instead of inserting duplicates.
     return f"{source_id}_{_version_token(version_value)}_{chunk_index:04d}"
 
 
@@ -156,6 +161,9 @@ def prepare_index_batch(
     normalized = _normalize_source_document(source_document)
     source_id = str(normalized["id"])
     partition_key = _source_partition_key(normalized)
+    # P0-2: device_version feeds build_chunk_id() below. Sourcing it from the
+    # Cosmos _etag/version/_ts (with a "v0" fallback) means the same revision
+    # always produces the same chunk IDs across retries.
     device_version = _device_version(normalized)
     search_text = _compose_source_text(normalized)
     chunks = _split_text(search_text)
@@ -179,6 +187,8 @@ def prepare_index_batch(
     for chunk_index, chunk_text in enumerate(chunks):
         content_hash = _chunk_content_hash(chunk_text)
         document: dict[str, Any] = {
+            # P0-2: assign the deterministic chunk ID so a retry of this same
+            # source+version overwrites the prior write instead of duplicating.
             "id": build_chunk_id(source_id, device_version, chunk_index),
             "sourceId": source_id,
             "sourcePartitionKey": partition_key,
