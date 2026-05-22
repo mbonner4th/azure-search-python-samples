@@ -41,7 +41,7 @@ def _run_az(args: list[str]) -> tuple[int, str, str]:
         capture_output=True,
         text=True,
         check=False,
-        shell=False,
+        shell=True,
     )
     return proc.returncode, proc.stdout, proc.stderr
 
@@ -49,7 +49,7 @@ def _run_az(args: list[str]) -> tuple[int, str, str]:
 def _parse_account_id(resource_id: str) -> tuple[str, str, str]:
     # /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.CognitiveServices/accounts/<acct>
     parts = resource_id.strip("/").split("/")
-    if len(parts) < 8 or parts[6] != "Microsoft.CognitiveServices":
+    if len(parts) < 8 or parts[5] != "Microsoft.CognitiveServices":
         raise SystemExit(f"FOUNDRY_ACCOUNT_RESOURCE_ID is not a CognitiveServices account id: {resource_id}")
     return parts[1], parts[3], parts[7]
 

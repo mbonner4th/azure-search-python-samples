@@ -14,7 +14,7 @@ Two reasons:
 
 1. **Foundry's tool-call evaluators (`tool_call_accuracy`, `tool_selection`,
    `tool_input_accuracy`) and `groundedness` have limited support when the
-   agent uses the Azure AI Search *knowledge tool*.** Wrapping retrieval as
+   agent uses the Azure AI Search _knowledge tool_.** Wrapping retrieval as
    a user-defined **Function Tool** is the documented workaround and gives
    the evaluators a tool definition + tool call trace they can reason over.
    That is exactly what `agent/search_devices_tool.py` does — it imports
@@ -39,7 +39,7 @@ better coverage of the patterns we actually want to grade:
 - **Negative cases** ("Is there an espresso machine in the Cafe?" → expect
   "I do not know") to score `groundedness` on refusals.
 - **No-tool case** ("Hello, can you tell me your name?") to score
-  `tool_selection` on when *not* to call the tool.
+  `tool_selection` on when _not_ to call the tool.
 
 Each row carries `expected_source_ids` and `expected_tool` so the
 evaluators can compare ground truth to the agent's tool calls and final

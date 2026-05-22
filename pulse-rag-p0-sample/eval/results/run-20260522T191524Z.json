@@ -1,0 +1,131 @@
+{
+  "agent_name": "pulse-device-agent",
+  "agent_version": "5",
+  "rows_evaluated": 1,
+  "elapsed_seconds": 40.9,
+  "judge_deployment": "eval-judge-gpt5mini",
+  "judge_endpoint": "https://aifnd-pulsedemo3euytx76c.cognitiveservices.azure.com",
+  "aggregate_mean_scores": {
+    "relevance": 5.0,
+    "groundedness": 5.0,
+    "intent_resolution": 5.0,
+    "task_adherence": 1.0,
+    "tool_call_accuracy": 5.0
+  },
+  "per_row": [
+    {
+      "query": "What is the model number of the Main Lobby Touch Panel?",
+      "ground_truth": "The Main Lobby Touch Panel (device-001) is a Crestron TSW-1070.",
+      "expected_source_ids": [
+        "device-001"
+      ],
+      "expected_tool": "search_devices",
+      "response": "The Main Lobby Touch Panel model is **Crestron TSW-1070** (device-001).",
+      "tool_calls": [
+        {
+          "type": "tool_call",
+          "tool_call_id": "call_6edb5843b7e84ffdbfa41ed8a6a89a16",
+          "name": "azure_ai_search",
+          "arguments": {
+            "query": "Main Lobby Touch Panel model number"
+          }
+        }
+      ],
+      "context_preview": "device-001\ncontoso\n\"0e0166de-0000-0200-0000-6a109f850000\"\n86fc39a1d4836a9e\nbe5c58b5-da73-445c-b8c2-72757dd3e0e9\n2026-05-22T18:25:11.921070+00:00\n\"0e0166de-0000-0200-0000-6a109f850000\"\nMain Lobby Touch Panel\nLobby\nHQ\nonline\nname: Main Lobby Touch Panel model: Crestron TSW-1070 room: Lobby building: HQ status: online description: Wall-mounted 10.1 inch touch panel for reception. Used to check in visitors, page security, and display building announcements. capabilities: touch, visitor-checkin, paging, signage notes: Replaced controller board on 2026-03-12. Firmware 2.4.118. tags: touch-panel, lobby, hq\n\n\ndevice-013\ncontoso\n\"0e01e8de-0000-0200-0000-6a109f870000\"\ndd7085396185d30d\n60a7bbe5-7c3b-4721-90ba-b9d7b3e70981\n2026-05-22T18:25:18.251984+00:00\n\"0e01e8de-0000-0200-0000-6a109f870000\"\nAnnex L",
+      "scores": {
+        "relevance": {
+          "relevance": 5.0,
+          "gpt_relevance": 5.0,
+          "relevance_result": "pass",
+          "relevance_threshold": 3,
+          "relevance_reason": "The response directly and clearly provides the exact model number of the Main Lobby Touch Panel as requested, fully addressing the user's query with precise and relevant information.",
+          "relevance_prompt_tokens": 1606,
+          "relevance_completion_tokens": 46,
+          "relevance_total_tokens": 1652,
+          "relevance_finish_reason": "stop",
+          "relevance_model": "gpt-4.1-mini-2025-04-14",
+          "relevance_sample_input": "[{\"role\": \"user\", \"content\": \"{\\\"query\\\": \\\"What is the model number of the Main Lobby Touch Panel?\\\", \\\"response\\\": \\\"The Main Lobby Touch Panel model is **Crestron TSW-1070** (device-001).\\\"}\"}]",
+          "relevance_sample_output": "[{\"role\": \"assistant\", \"content\": \"{\\n  \\\"explanation\\\": \\\"The response directly and clearly provides the exact model number of the Main Lobby Touch Panel as requested, fully addressing the user's query with precise and relevant information.\\\",\\n  \\\"score\\\": 5\\n}\"}]"
+        },
+        "groundedness": {
+          "groundedness": 5.0,
+          "gpt_groundedness": 5.0,
+          "groundedness_reason": "The response is fully correct and complete, directly matching the model number of the Main Lobby Touch Panel as given in the context without any errors or omissions.",
+          "groundedness_result": "pass",
+          "groundedness_threshold": 3,
+          "groundedness_prompt_tokens": 2439,
+          "groundedness_completion_tokens": 179,
+          "groundedness_total_tokens": 2618,
+          "groundedness_finish_reason": "stop",
+          "groundedness_model": "gpt-4.1-mini-2025-04-14",
+          "groundedness_sample_input": "[{\"role\": \"user\", \"content\": \"{\\\"query\\\": \\\"What is the model number of the Main Lobby Touch Panel?\\\", \\\"response\\\": \\\"The Main Lobby Touch Panel model is **Crestron TSW-1070** (device-001).\\\", \\\"context\\\": \\\"device-001\\\\ncontoso\\\\n\\\\\\\"0e0166de-0000-0200-0000-6a109f850000\\\\\\\"\\\\n86fc39a1d4836a9e\\\\nbe5c58b5-da73-445c-b8c2-72757dd3e0e9\\\\n2026-05-22T18:25:11.921070+00:00\\\\n\\\\\\\"0e0166de-0000-0200-0000-6a109f850000\\\\\\\"\\\\nMain Lobby Touch Panel\\\\nLobby\\\\nHQ\\\\nonline\\\\nname: Main Lobby Touch Panel model: Crestron TSW-1070 room: Lobby building: HQ status: online description: Wall-mounted 10.1 inch touch panel for reception. Used to check in visitors, page security, and display building announcements. capabilities: touch, visitor-checkin, paging, signage notes: Replaced controller board on 2026-03-12. Firmware 2.4.118. tags: touch-panel, lobby, hq\\\\n\\\\n\\\\ndevice-013\\\\ncontoso\\\\n\\\\\\\"0e01e8de-0000-0200-0000-6a109f870000\\\\\\\"\\\\ndd7085396185d30d\\\\n60a7bbe5-7c3b-4721-90ba-b9d7b3e70981\\\\n2026-05-22T18:25:18.251984+00:00\\\\n\\\\\\\"0e01e8de-0000-0200-0000-6a109f870000\\\\\\\"\\\\nAnnex Lobby Digital Sign\\\\nAnnex-Lobby\\\\nAnnex\\\\nonline\\\\nname: Annex Lobby Digital Sign model: Samsung QM85R-B room: Annex-Lobby building: Annex status: online description: 85 inch portrait digital signage display in the Annex lobby. Cycles between visitor wayfinding, daily menu, and security announcements. capabilities: display, signage, portrait notes: Content feed from the CMS playlist Annex-Lobby-Daily. tags: display, signage, annex\\\\n\\\\n\\\\ndevice-004\\\\ncontoso\\\\n\\\\\\\"0e019dde-0000-0200-0000-6a109f860000\\\\\\\"\\\\naa81acd217bbfa1f\\\\nbd4f2b4a-5ea1-4fff-aaf5-896c06f21c6f\\\\n2026-05-22T18:25:15.293726+00:00\\\\n\\\\\\\"0e019dde-0000-0200-0000-6a109f860000\\\\\\\"\\\\nCafe Scheduling Panel A\\\\nCafe-A\\\\nHQ\\\\nonline\\\\nname: Cafe Scheduling Panel A model: Crestron TSS-770 room: Cafe-A building: HQ status: online description: Outside-room scheduling panel for the Cafe collaboration space. Shows current and next meeting and supports ad-hoc booking. capabilities: scheduling, exchange-integration, touch notes: Bound to room mailbox cafe-a@contoso.com. tags: scheduling, cafe, hq\\\\n\\\\n\\\\ndevice-015\\\\ncontoso\\\\n\\\\\\\"0e01f2de-0000-0200-0000-6a109f880000\\\\\\\"\\\\n24b776234db145b0\\\\nb5f5abbb-75af-4fdb-b3e0-ba10bfa877ae\\\\n2026-05-22T18:25:18.881384+00:00\\\\n\\\\\\\"0e01f2de-0000-0200-0000-6a109f880000\\\\\\\"\\\\nExecutive Suite Touch Panel\\\\nExec-Suite\\\\nHQ\\\\nonline\\\\nname: Executive Suite Touch Panel model: Crestron TSW-770 room: Exec-Suite building: HQ status: online description: 7 inch wall panel for the executive suite. Drives lighting scenes, shade control, and an HDMI input selector for the side display. capabilities: touch, lighting, shades, switching notes: Scene presets refreshed quarterly. tags: touch-panel, executive, hq\\\\n\\\\n\\\\ndevice-010\\\\ncontoso\\\\n\\\\\\\"0e01cade-0000-0200-0000-6a109f870000\\\\\\\"\\\\n06fdaaf2bcba372f\\\\n7c718dcd-f493-44cf-8f76-20a7825dab00\\\\n2026-05-22T18:25:17.120690+00:00\\\\n\\\\\\\"0e01cade-0000-0200-0000-6a109f870000\\\\\\\"\\\\nTraining Room Touch Panel\\\\nTraining-1\\\\nHQ\\\\nonline\\\\nname: Training Room Touch Panel model: Crestron TS-1070-B-S room: Training-1 building: HQ status: online description: Tabletop touch panel that runs the room mode UI for the training room. Switches between local PC, instructor laptop, and wireless sharing. capabilities: touch, switching, wireless-share notes: UI updated to v3 layout 2026-04-22. tags: touch-panel, training, hq\\\"}\"}]",
+          "groundedness_sample_output": "[{\"role\": \"assistant\", \"content\": \"<S0>Let's think step by step: The query asks specifically for the model number of the Main Lobby Touch Panel. The context provides detailed information about multiple devices, including the Main Lobby Touch Panel, which is identified as device-001. The context explicitly states the model of the Main Lobby Touch Panel as \\\"Crestron TSW-1070.\\\" The response directly answers the query by stating the model number as \\\"Crestron TSW-1070\\\" and references the device ID (device-001), which matches the context. There is no extraneous or incorrect information, and the response fully addresses the question based on the context provided.</S0> \\n<S1>The response is fully correct and complete, directly matching the model number of the Main Lobby Touch Panel as given in the context without any errors or omissions.</S1> \\n<S2>5</S2>\"}]"
+        },
+        "intent_resolution": {
+          "intent_resolution": 5.0,
+          "gpt_intent_resolution": 5.0,
+          "intent_resolution_result": "pass",
+          "intent_resolution_threshold": 3,
+          "intent_resolution_reason": "User asked for the model number of the Main Lobby Touch Panel. The agent directly provided the exact model number with a clear identifier, fully satisfying the user's intent with accurate and complete information.",
+          "intent_resolution_prompt_tokens": 1912,
+          "intent_resolution_completion_tokens": 53,
+          "intent_resolution_total_tokens": 1965,
+          "intent_resolution_finish_reason": "stop",
+          "intent_resolution_model": "gpt-4.1-mini-2025-04-14",
+          "intent_resolution_sample_input": "[{\"role\": \"user\", \"content\": \"{\\\"query\\\": \\\"What is the model number of the Main Lobby Touch Panel?\\\", \\\"response\\\": \\\"The Main Lobby Touch Panel model is **Crestron TSW-1070** (device-001).\\\", \\\"tool_definitions\\\": [{\\\"name\\\": \\\"azure_ai_search\\\", \\\"description\\\": \\\"Built-in Azure AI Search retrieval over the pulse-device-chunks index. Returns grounding chunks about the customer's Pulse devices (touch panels, displays, cameras, DSPs, sensors). The model issues a search query and receives matching documents to ground its answer.\\\", \\\"parameters\\\": {\\\"type\\\": \\\"object\\\", \\\"properties\\\": {\\\"query\\\": {\\\"type\\\": \\\"string\\\", \\\"description\\\": \\\"Search query passed to Azure AI Search.\\\"}}, \\\"required\\\": [\\\"query\\\"]}}]}\"}]",
+          "intent_resolution_sample_output": "[{\"role\": \"assistant\", \"content\": \"{\\n  \\\"explanation\\\": \\\"User asked for the model number of the Main Lobby Touch Panel. The agent directly provided the exact model number with a clear identifier, fully satisfying the user's intent with accurate and complete information.\\\",\\n  \\\"score\\\": 5\\n}\"}]"
+        },
+        "task_adherence": {
+          "task_adherence": 1.0,
+          "task_adherence_result": "pass",
+          "task_adherence_threshold": 3,
+          "task_adherence_reason": "The user asked specifically for the model number of the Main Lobby Touch Panel. The assistant directly provided a concise answer stating that the model is \"Crestron TSW-1070\" and included a plausible device identifier. There was no ambiguity to resolve, no unnecessary or unrelated information included, and no external tool calls were made or needed to verify this straightforward piece of information. The assistant did not make any unverifiable claims based on tool outputs but simply responded with relevant data, which aligns with the user's request. No safety, privacy, or procedural issues are present since the response is factual, non-sensitive, and does not invoke or depend on any workflow. Therefore, the assistant fully achieved the user's objective with no material failures identified.",
+          "task_adherence_details": "",
+          "task_adherence_prompt_tokens": 1340,
+          "task_adherence_completion_tokens": 162,
+          "task_adherence_total_tokens": 1502,
+          "task_adherence_finish_reason": "stop",
+          "task_adherence_model": "gpt-4.1-mini-2025-04-14",
+          "task_adherence_sample_input": "[{\"role\": \"user\", \"content\": \"{\\\"system_message\\\": \\\"\\\", \\\"query\\\": \\\"What is the model number of the Main Lobby Touch Panel?\\\", \\\"response\\\": \\\"The Main Lobby Touch Panel model is **Crestron TSW-1070** (device-001).\\\", \\\"tool_calls\\\": \\\"\\\"}\"}]",
+          "task_adherence_sample_output": "[{\"role\": \"assistant\", \"content\": \"{\\n  \\\"reasoning\\\": \\\"The user asked specifically for the model number of the Main Lobby Touch Panel. The assistant directly provided a concise answer stating that the model is \\\\\\\"Crestron TSW-1070\\\\\\\" and included a plausible device identifier. There was no ambiguity to resolve, no unnecessary or unrelated information included, and no external tool calls were made or needed to verify this straightforward piece of information. The assistant did not make any unverifiable claims based on tool outputs but simply responded with relevant data, which aligns with the user's request. No safety, privacy, or procedural issues are present since the response is factual, non-sensitive, and does not invoke or depend on any workflow. Therefore, the assistant fully achieved the user's objective with no material failures identified.\\\",\\n  \\\"flagged\\\": false\\n}\"}]"
+        },
+        "tool_call_accuracy": {
+          "tool_call_accuracy": 5.0,
+          "gpt_tool_call_accuracy": 5.0,
+          "tool_call_accuracy_result": "pass",
+          "tool_call_accuracy_threshold": 3,
+          "tool_call_accuracy_reason": "Let's think step by step: The user's last query is asking for the model number of the Main Lobby Touch Panel. The relevant tool available is 'azure_ai_search', which searches the pulse-device-chunks index for information about Pulse devices including touch panels. The agent made one tool call to 'azure_ai_search' with the query parameter 'Main Lobby Touch Panel model number', which is directly relevant and correctly grounded from the user's query. There are no fabricated parameters, no missing tool calls since only one tool is needed to retrieve the relevant information, and no duplicate or excessive calls. The tool call was made once and no errors are reported. Therefore, the tool call is fully relevant, correct, efficient, and executed successfully, meeting the criteria for an optimal solution.",
+          "tool_call_accuracy_details": {
+            "tool_calls_made_by_agent": 1,
+            "correct_tool_calls_made_by_agent": 1,
+            "per_tool_call_details": [
+              {
+                "tool_name": "azure_ai_search",
+                "total_calls_required": 1,
+                "correct_calls_made_by_agent": 1,
+                "correct_tool_percentage": 1.0,
+                "tool_call_errors": 0,
+                "tool_success_result": "pass"
+              }
+            ],
+            "excess_tool_calls": {
+              "total": 0,
+              "details": []
+            },
+            "missing_tool_calls": {
+              "total": 0,
+              "details": []
+            }
+          },
+          "tool_call_accuracy_prompt_tokens": 2244,
+          "tool_call_accuracy_completion_tokens": 322,
+          "tool_call_accuracy_total_tokens": 2566,
+          "tool_call_accuracy_finish_reason": "stop",
+          "tool_call_accuracy_model": "gpt-4.1-mini-2025-04-14",
+          "tool_call_accuracy_sample_input": "[{\"role\": \"user\", \"content\": \"{\\\"query\\\": \\\"What is the model number of the Main Lobby Touch Panel?\\\", \\\"tool_calls\\\": [{\\\"type\\\": \\\"tool_call\\\", \\\"tool_call_id\\\": \\\"call_6edb5843b7e84ffdbfa41ed8a6a89a16\\\", \\\"name\\\": \\\"azure_ai_search\\\", \\\"arguments\\\": {\\\"query\\\": \\\"Main Lobby Touch Panel model number\\\"}}], \\\"tool_definitions\\\": [{\\\"name\\\": \\\"azure_ai_search\\\", \\\"description\\\": \\\"Built-in Azure AI Search retrieval over the pulse-device-chunks index. Returns grounding chunks about the customer's Pulse devices (touch panels, displays, cameras, DSPs, sensors). The model issues a search query and receives matching documents to ground its answer.\\\", \\\"parameters\\\": {\\\"type\\\": \\\"object\\\", \\\"properties\\\": {\\\"query\\\": {\\\"type\\\": \\\"string\\\", \\\"description\\\": \\\"Search query passed to Azure AI Search.\\\"}}, \\\"required\\\": [\\\"query\\\"]}}, {\\\"type\\\": \\\"azure_ai_search\\\", \\\"description\\\": \\\"Search an Azure AI Search index for relevant data.\\\", \\\"name\\\": \\\"azure_ai_search\\\", \\\"parameters\\\": {\\\"type\\\": \\\"object\\\", \\\"properties\\\": {\\\"input\\\": {\\\"type\\\": \\\"string\\\", \\\"description\\\": \\\"Search terms to use.\\\"}}}}]}\"}]",
+          "tool_call_accuracy_sample_output": "[{\"role\": \"assistant\", \"content\": \"{\\n  \\\"chain_of_thought\\\": \\\"Let's think step by step: The user's last query is asking for the model number of the Main Lobby Touch Panel. The relevant tool available is 'azure_ai_search', which searches the pulse-device-chunks index for information about Pulse devices including touch panels. The agent made one tool call to 'azure_ai_search' with the query parameter 'Main Lobby Touch Panel model number', which is directly relevant and correctly grounded from the user's query. There are no fabricated parameters, no missing tool calls since only one tool is needed to retrieve the relevant information, and no duplicate or excessive calls. The tool call was made once and no errors are reported. Therefore, the tool call is fully relevant, correct, efficient, and executed successfully, meeting the criteria for an optimal solution.\\\",\\n  \\\"tool_calls_success_level\\\": 5,\\n  \\\"details\\\": {\\n    \\\"tool_calls_made_by_agent\\\": 1,\\n    \\\"correct_tool_calls_made_by_agent\\\": 1,\\n    \\\"per_tool_call_details\\\": [\\n      {\\n        \\\"tool_name\\\": \\\"azure_ai_search\\\",\\n        \\\"total_calls_required\\\": 1,\\n        \\\"correct_calls_made_by_agent\\\": 1,\\n        \\\"correct_tool_percentage\\\": 1.0,\\n        \\\"tool_call_errors\\\": 0,\\n        \\\"tool_success_result\\\": \\\"pass\\\"\\n      }\\n    ],\\n    \\\"excess_tool_calls\\\": {\\n      \\\"total\\\": 0,\\n      \\\"details\\\": []\\n    },\\n    \\\"missing_tool_calls\\\": {\\n      \\\"total\\\": 0,\\n      \\\"details\\\": []\\n    }\\n  }\\n}\"}]"
+        }
+      }
+    }
+  ]
+}
