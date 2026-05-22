@@ -13,6 +13,9 @@
     },
     "openAiLocation": {
       "value": "${AZURE_OPENAI_LOCATION=eastus2}"
+    },
+    "cosmosLocation": {
+      "value": "${AZURE_COSMOS_LOCATION=eastus2}"
     }
   }
 }
